@@ -85,10 +85,12 @@
       display: flex; align-items: flex-start; gap: 14px;
     }
     .card-logo {
-      width: 50px; height: 50px; border-radius: 12px;
+      width: 56px; height: 56px; border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.5rem; color: white; flex-shrink: 0;
+      overflow: hidden; padding: 4px;
     }
+    .card-logo svg { width: 100%; height: 100%; }
     .card-title h3 { font-size: 1.05rem; font-weight: 700; }
     .card-title .name-en { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
     .badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
@@ -260,6 +262,50 @@
 </div>
 
 <script>
+/* ── School SVG Logos ── */
+const logoSVGs = {
+  'saint-gabriel': `<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <rect x="21" y="5" width="8" height="24" fill="white" rx="2"/>
+    <rect x="10" y="13" width="30" height="8" fill="white" rx="2"/>
+    <text x="9" y="12" fill="#ffd700" font-size="9" font-family="serif">★</text>
+    <text x="36" y="12" fill="#ffd700" font-size="9" font-family="serif">★</text>
+    <text x="25" y="44" text-anchor="middle" fill="#ffd700" font-size="13" font-weight="800" font-family="Georgia,serif" letter-spacing="1">SG</text>
+  </svg>`,
+  'assumption-bangrак': `<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <rect x="22" y="6" width="6" height="22" fill="white" rx="1.5"/>
+    <rect x="12" y="14" width="26" height="6" fill="white" rx="1.5"/>
+    <line x1="10" y1="32" x2="40" y2="32" stroke="white" stroke-width="0.8" opacity="0.5"/>
+    <text x="25" y="44" text-anchor="middle" fill="#ffd700" font-size="13" font-weight="800" font-family="Georgia,serif" letter-spacing="1">AC</text>
+  </svg>`,
+  'assumption-thonburi': `<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="25,4 27,11 34,11 28.5,15 30.5,22 25,17.5 19.5,22 21.5,15 16,11 23,11" fill="#ffd700"/>
+    <text x="25" y="35" text-anchor="middle" fill="white" font-size="12" font-weight="900" font-family="Arial,sans-serif" letter-spacing="0.5">ACT</text>
+    <text x="25" y="46" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="8" font-family="Arial,sans-serif">2504</text>
+  </svg>`,
+  'bangkok-christian': `<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <rect x="22.5" y="5" width="5" height="27" fill="white" rx="1.5"/>
+    <rect x="12" y="12" width="26" height="6" fill="white" rx="1.5"/>
+    <text x="25" y="45" text-anchor="middle" fill="#ffd700" font-size="10.5" font-weight="800" font-family="Arial,sans-serif" letter-spacing="0.5">BCC</text>
+  </svg>`,
+  'satit-swu': `<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="25" cy="12" rx="7" ry="9" fill="#ffd700"/>
+    <ellipse cx="25" cy="14" rx="4.5" ry="5.5" fill="#ff8c00"/>
+    <ellipse cx="25" cy="16" rx="2" ry="3" fill="#ffd700"/>
+    <rect x="23" y="19" width="4" height="13" fill="#ffd700" rx="2"/>
+    <rect x="19" y="31" width="12" height="3" fill="#ffd700" rx="1.5"/>
+    <text x="25" y="47" text-anchor="middle" fill="white" font-size="9" font-weight="700" font-family="Arial,sans-serif">SWU</text>
+  </svg>`,
+  'satit-ku': `<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <line x1="25" y1="36" x2="25" y2="12" stroke="#ffd700" stroke-width="2.5"/>
+    <ellipse cx="25" cy="9" rx="4" ry="7" fill="#ffd700"/>
+    <line x1="24" y1="33" x2="17" y2="21" stroke="#ffd700" stroke-width="1.8"/>
+    <ellipse cx="15.5" cy="18.5" rx="3.5" ry="6" fill="#ffd700" transform="rotate(-18 15.5 18.5)"/>
+    <line x1="26" y1="33" x2="33" y2="21" stroke="#ffd700" stroke-width="1.8"/>
+    <ellipse cx="34.5" cy="18.5" rx="3.5" ry="6" fill="#ffd700" transform="rotate(18 34.5 18.5)"/>
+    <text x="25" y="47" text-anchor="middle" fill="white" font-size="9" font-weight="700" font-family="Arial,sans-serif">KU</text>
+  </svg>`
+};
+
 let schoolData = null;
 let checkedItems = JSON.parse(localStorage.getItem('schoolChecklist') || '{}');
 
@@ -303,7 +349,7 @@ function renderCards(schools) {
   grid.innerHTML = schools.map(s => `
     <div class="school-card">
       <div class="card-header">
-        <div class="card-logo" style="background:${s.color}">${s.logo_emoji}</div>
+        <div class="card-logo" style="background:${s.color}">${logoSVGs[s.id] || s.logo_emoji}</div>
         <div class="card-title">
           <h3>${s.name}</h3>
           <div class="name-en">${s.name_en}</div>
@@ -359,7 +405,7 @@ function renderTimeline(schools) {
     <div class="tl-item">
       <div class="tl-dot ${s.apply_urgency}"></div>
       <div class="tl-month">${s.apply_period}</div>
-      <div class="tl-school">${s.logo_emoji} ${s.name}</div>
+      <div class="tl-school" style="display:flex;align-items:center;gap:8px;">${logoSVGs[s.id] ? `<span style="display:inline-flex;background:${s.color};border-radius:6px;padding:3px;width:24px;height:24px;flex-shrink:0;">${logoSVGs[s.id]}</span>` : s.logo_emoji} ${s.name}</div>
       <div class="tl-action">วิธีคัดเลือก: ${s.selection_method} | สอบ/ประเมิน: ${s.exam_date}</div>
       ${s.urgency_note ? `<div style="margin-top:4px;font-size:0.8rem;color:${s.apply_urgency==='urgent'?'var(--urgent)':'var(--muted)'};">${s.urgency_note}</div>` : ''}
     </div>
@@ -382,7 +428,7 @@ function renderCompare(schools) {
     <tbody>
       ${schools.map(s => `
         <tr>
-          <td><strong>${s.logo_emoji} ${s.name}</strong><br><span style="color:var(--muted);font-size:0.78rem;">${s.short}</span></td>
+          <td><strong style="display:flex;align-items:center;gap:6px;">${logoSVGs[s.id] ? `<span style="display:inline-flex;background:${s.color};border-radius:5px;padding:2px;width:22px;height:22px;flex-shrink:0;">${logoSVGs[s.id]}</span>` : s.logo_emoji} ${s.name}</strong><span style="color:var(--muted);font-size:0.78rem;">${s.short}</span></td>
           <td>${s.gender}</td>
           <td>${s.selection_method}</td>
           <td><span class="urgency-tag urgency-${s.apply_urgency}" style="font-size:0.75rem;padding:2px 8px;">${s.apply_period}</span></td>
@@ -451,7 +497,9 @@ function showTab(name) {
 function openModal(id) {
   const s = schoolData.schools.find(x => x.id === id);
   if (!s) return;
-  document.getElementById('modalTitle').textContent = s.logo_emoji + ' ' + s.name;
+  document.getElementById('modalTitle').innerHTML = (logoSVGs[s.id]
+    ? `<span style="display:inline-flex;background:${s.color};border-radius:8px;padding:4px;width:32px;height:32px;vertical-align:middle;margin-right:8px;">${logoSVGs[s.id]}</span>`
+    : s.logo_emoji + ' ') + s.name;
   document.getElementById('modalSubtitle').textContent = s.name_en;
   document.getElementById('modalBody').innerHTML = `
     <div style="margin-bottom:16px;">
