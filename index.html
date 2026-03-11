@@ -207,6 +207,7 @@
     <button class="nav-tab active" onclick="showTab('cards')">🏫 ทุกโรงเรียน</button>
     <button class="nav-tab" onclick="showTab('timeline')">📅 Timeline</button>
     <button class="nav-tab" onclick="showTab('compare')">📊 เปรียบเทียบ</button>
+    <button class="nav-tab" onclick="showTab('act')">⭐ หลักสูตร ACT</button>
     <button class="nav-tab" onclick="showTab('docs')">📋 Checklist เอกสาร</button>
   </div>
 
@@ -234,6 +235,252 @@
     <div style="background:white;border-radius:var(--radius);border:1px solid var(--border);padding:24px;overflow-x:auto;">
       <h2 style="margin-bottom:18px;font-size:1.2rem;">📊 ตารางเปรียบเทียบ</h2>
       <table class="comparison-table" id="compareTable"></table>
+    </div>
+  </div>
+
+  <!-- ── TAB: ACT Programs ── -->
+  <div class="section" id="section-act">
+    <div style="background:#003087;color:white;border-radius:var(--radius);padding:24px 28px;margin-bottom:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+      <div style="background:rgba(255,255,255,0.15);border-radius:12px;width:64px;height:64px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+          <polygon points="25,4 27,11 34,11 28.5,15 30.5,22 25,17.5 19.5,22 21.5,15 16,11 23,11" fill="#ffd700"/>
+          <text x="25" y="35" text-anchor="middle" fill="white" font-size="12" font-weight="900" font-family="Arial,sans-serif" letter-spacing="0.5">ACT</text>
+          <text x="25" y="46" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="8" font-family="Arial,sans-serif">2504</text>
+        </svg>
+      </div>
+      <div>
+        <h2 style="font-size:1.3rem;font-weight:800;margin-bottom:4px;">โรงเรียนอัสสัมชัญธนบุรี — 5 หลักสูตร ป.1 ปีการศึกษา 2570</h2>
+        <p style="opacity:0.85;font-size:0.9rem;">📅 สมัคร 13-30 มิ.ย. 2569 &nbsp;|&nbsp; 📖 สอบ 11 ก.ค. 2569 &nbsp;|&nbsp; 📣 ผล 16 ก.ค. 2569</p>
+        <p style="margin-top:8px;background:rgba(255,200,0,0.2);border:1px solid rgba(255,200,0,0.4);border-radius:6px;padding:4px 12px;font-size:0.82rem;display:inline-block;">
+          ⚠️ บุตรเกิด ก.ย. 2564 ✅ สมัครได้ปกติ — ต้องจ่ายส่วนต่าง <strong>+14,635 บาท/ปี</strong>
+        </p>
+      </div>
+    </div>
+
+    <!-- Program Cards Grid -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;margin-bottom:20px;">
+
+      <!-- 1. English Program -->
+      <div style="background:white;border-radius:var(--radius);border:2px solid #1a3a6e;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        <div style="background:#1a3a6e;color:white;padding:14px 18px;display:flex;align-items:center;gap:10px;">
+          <span style="font-size:1.5rem;">🌍</span>
+          <div style="flex:1;">
+            <div style="font-weight:800;font-size:0.98rem;">English Program (EP)</div>
+            <div style="font-size:0.76rem;opacity:0.8;">สอนเป็นภาษาอังกฤษทุกวิชา</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.68rem;opacity:0.75;">รวมทั้งปี</div>
+            <div style="font-size:1rem;font-weight:800;color:#ffd700;">301,700 ฿</div>
+          </div>
+        </div>
+        <div style="padding:14px 18px;">
+          <ul style="font-size:0.84rem;line-height:1.85;padding-left:16px;color:#374151;margin-bottom:12px;">
+            <li>ร่วมมือ <strong>Cambridge University Press</strong></li>
+            <li>ครูต่างชาติสอน วิทย์ คณิต คอม พลศึกษา</li>
+            <li>มาตรฐาน <strong>CEFR</strong> (Cambridge)</li>
+            <li>ไม่เกิน <strong>30 คน</strong>/ห้องเรียน</li>
+          </ul>
+          <div style="background:#f0f4ff;border-radius:8px;padding:10px 14px;font-size:0.81rem;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span>💳 รักษาสิทธิ์</span><span>110,000</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span>📚 ค่าเรียน</span><span>140,000</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span>🎒 นักเรียนใหม่</span><span>51,700</span></div>
+            <div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid #c7d2fe;padding-top:6px;margin-bottom:4px;"><span>รวมทั้งปี</span><span style="color:#1a3a6e;">301,700 ฿</span></div>
+            <div style="display:flex;justify-content:space-between;color:#dc2626;font-size:0.77rem;"><span>+ ส่วนต่าง (บุตรท่าน)</span><span>+14,635</span></div>
+            <div style="display:flex;justify-content:space-between;font-weight:700;color:#dc2626;"><span>รวมสุทธิ (บุตรท่าน)</span><span>316,335 ฿</span></div>
+          </div>
+          <div style="margin-top:8px;"><div style="font-size:0.72rem;color:#9ca3af;margin-bottom:3px;">เทียบกับ IEP (ถูกสุด)</div><div style="background:#e5e7eb;border-radius:3px;height:7px;overflow:hidden;"><div style="background:#1a3a6e;height:100%;width:100%;border-radius:3px;"></div></div><div style="font-size:0.7rem;color:#9ca3af;text-align:right;margin-top:2px;">สูงสุด</div></div>
+        </div>
+      </div>
+
+      <!-- 2. STEM-CEL -->
+      <div style="background:white;border-radius:var(--radius);border:2px solid #b45309;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        <div style="background:#b45309;color:white;padding:14px 18px;display:flex;align-items:center;gap:10px;">
+          <span style="font-size:1.5rem;">⚙️</span>
+          <div style="flex:1;">
+            <div style="font-weight:800;font-size:0.98rem;">STEM-CEL</div>
+            <div style="font-size:0.76rem;opacity:0.8;">วิทย์-เทคโน-วิศวะ-คณิต + Cambridge English</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.68rem;opacity:0.75;">รวมทั้งปี</div>
+            <div style="font-size:1rem;font-weight:800;color:#ffd700;">~190,300 ฿</div>
+          </div>
+        </div>
+        <div style="padding:14px 18px;">
+          <ul style="font-size:0.84rem;line-height:1.85;padding-left:16px;color:#374151;margin-bottom:12px;">
+            <li>บูรณาการ STEM + <strong>Cambridge English</strong></li>
+            <li><strong>Learning by Doing</strong> / Project-Based</li>
+            <li>Day Camp ประสบการณ์จริงนอกห้องเรียน</li>
+            <li>วัดผลมาตรฐาน Cambridge University</li>
+          </ul>
+          <div style="background:#fef3c7;border-radius:8px;padding:10px 14px;font-size:0.81rem;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span>📖 ภาคเรียนที่ 1</span><span>143,300</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span>📖 ภาคเรียนที่ 2</span><span>~47,000</span></div>
+            <div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid #fde68a;padding-top:6px;margin-bottom:4px;"><span>รวมทั้งปี</span><span style="color:#b45309;">~190,300 ฿</span></div>
+            <div style="display:flex;justify-content:space-between;color:#dc2626;font-size:0.77rem;"><span>+ ส่วนต่าง (บุตรท่าน)</span><span>+14,635</span></div>
+            <div style="display:flex;justify-content:space-between;font-weight:700;color:#dc2626;"><span>รวมสุทธิ (บุตรท่าน)</span><span>~204,935 ฿</span></div>
+          </div>
+          <div style="margin-top:8px;"><div style="font-size:0.72rem;color:#9ca3af;margin-bottom:3px;">เทียบกับ IEP (ถูกสุด)</div><div style="background:#e5e7eb;border-radius:3px;height:7px;overflow:hidden;"><div style="background:#b45309;height:100%;width:80%;border-radius:3px;"></div></div><div style="font-size:0.7rem;color:#9ca3af;text-align:right;margin-top:2px;">~80% ของ EP</div></div>
+        </div>
+      </div>
+
+      <!-- 3. CEL -->
+      <div style="background:white;border-radius:var(--radius);border:2px solid #1d4ed8;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        <div style="background:#1d4ed8;color:white;padding:14px 18px;display:flex;align-items:center;gap:10px;">
+          <span style="font-size:1.5rem;">🇬🇧</span>
+          <div style="flex:1;">
+            <div style="font-weight:800;font-size:0.98rem;">CEL — Cambridge English Language</div>
+            <div style="font-size:0.76rem;opacity:0.8;">UK Standard · ใบรับรองระดับสากล</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.68rem;opacity:0.75;">รวมทั้งปี</div>
+            <div style="font-size:1rem;font-weight:800;color:#ffd700;">~170,300 ฿</div>
+          </div>
+        </div>
+        <div style="padding:14px 18px;">
+          <ul style="font-size:0.84rem;line-height:1.85;padding-left:16px;color:#374151;margin-bottom:12px;">
+            <li><strong>Cambridge UK Standard</strong> — ครูต่างชาติ</li>
+            <li>Placement Test จัด <strong>3 ระดับ</strong> ตามความสามารถ</li>
+            <li>Student Talking Time (STT) ฝึกพูดทุกคาบ</li>
+            <li>ได้รับ <strong>ใบรับรองสากล</strong> Cambridge YLE</li>
+          </ul>
+          <div style="background:#eff6ff;border-radius:8px;padding:10px 14px;font-size:0.81rem;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span>📖 ภาคเรียนที่ 1</span><span>142,300</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span>📖 ภาคเรียนที่ 2</span><span>~28,000</span></div>
+            <div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid #bfdbfe;padding-top:6px;margin-bottom:4px;"><span>รวมทั้งปี</span><span style="color:#1d4ed8;">~170,300 ฿</span></div>
+            <div style="display:flex;justify-content:space-between;color:#dc2626;font-size:0.77rem;"><span>+ ส่วนต่าง (บุตรท่าน)</span><span>+14,635</span></div>
+            <div style="display:flex;justify-content:space-between;font-weight:700;color:#dc2626;"><span>รวมสุทธิ (บุตรท่าน)</span><span>~184,935 ฿</span></div>
+          </div>
+          <div style="margin-top:8px;"><div style="font-size:0.72rem;color:#9ca3af;margin-bottom:3px;">เทียบกับ IEP (ถูกสุด)</div><div style="background:#e5e7eb;border-radius:3px;height:7px;overflow:hidden;"><div style="background:#1d4ed8;height:100%;width:71%;border-radius:3px;"></div></div><div style="font-size:0.7rem;color:#9ca3af;text-align:right;margin-top:2px;">~71% ของ EP</div></div>
+        </div>
+      </div>
+
+      <!-- 4. Smart Science -->
+      <div style="background:white;border-radius:var(--radius);border:2px solid #0f766e;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        <div style="background:#0f766e;color:white;padding:14px 18px;display:flex;align-items:center;gap:10px;">
+          <span style="font-size:1.5rem;">🔬</span>
+          <div style="flex:1;">
+            <div style="font-weight:800;font-size:0.98rem;">Smart Science</div>
+            <div style="font-size:0.76rem;opacity:0.8;">Science · Math · Arts · Reasoning · Tech</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.68rem;opacity:0.75;">รวมทั้งปี</div>
+            <div style="font-size:1rem;font-weight:800;color:#ffd700;">~174,800 ฿</div>
+          </div>
+        </div>
+        <div style="padding:14px 18px;">
+          <ul style="font-size:0.84rem;line-height:1.85;padding-left:16px;color:#374151;margin-bottom:12px;">
+            <li>Advanced Mathematics + Advanced Science</li>
+            <li><strong>SMART Play Lab</strong> ทดลอง Hands-On</li>
+            <li><strong>Exploration Camp</strong> ค้นหาความสนใจ</li>
+            <li>Role-Play: นักวิทย์ / นักคณิต / วิศวกร</li>
+          </ul>
+          <div style="background:#f0fdf4;border-radius:8px;padding:10px 14px;font-size:0.81rem;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span>📖 ภาคเรียนที่ 1</span><span>135,800</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span>📖 ภาคเรียนที่ 2</span><span>~39,000</span></div>
+            <div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid #bbf7d0;padding-top:6px;margin-bottom:4px;"><span>รวมทั้งปี</span><span style="color:#0f766e;">~174,800 ฿</span></div>
+            <div style="display:flex;justify-content:space-between;color:#dc2626;font-size:0.77rem;"><span>+ ส่วนต่าง (บุตรท่าน)</span><span>+14,635</span></div>
+            <div style="display:flex;justify-content:space-between;font-weight:700;color:#dc2626;"><span>รวมสุทธิ (บุตรท่าน)</span><span>~189,435 ฿</span></div>
+          </div>
+          <div style="margin-top:8px;"><div style="font-size:0.72rem;color:#9ca3af;margin-bottom:3px;">เทียบกับ IEP (ถูกสุด)</div><div style="background:#e5e7eb;border-radius:3px;height:7px;overflow:hidden;"><div style="background:#0f766e;height:100%;width:73%;border-radius:3px;"></div></div><div style="font-size:0.7rem;color:#9ca3af;text-align:right;margin-top:2px;">~73% ของ EP</div></div>
+        </div>
+      </div>
+
+      <!-- 5. IEP -->
+      <div style="background:white;border-radius:var(--radius);border:2px solid #7c3aed;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        <div style="background:#7c3aed;color:white;padding:14px 18px;display:flex;align-items:center;gap:10px;">
+          <span style="font-size:1.5rem;">💬</span>
+          <div style="flex:1;">
+            <div style="font-weight:800;font-size:0.98rem;">IEP — Interactive English Program</div>
+            <div style="font-size:0.76rem;opacity:0.8;">Active Learning · ราคาประหยัดที่สุด</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.68rem;opacity:0.75;">รวมทั้งปี</div>
+            <div style="font-size:1rem;font-weight:800;color:#ffd700;">~144,800 ฿</div>
+          </div>
+        </div>
+        <div style="padding:14px 18px;">
+          <ul style="font-size:0.84rem;line-height:1.85;padding-left:16px;color:#374151;margin-bottom:12px;">
+            <li><strong>Active Learning</strong> เน้นการมีส่วนร่วม</li>
+            <li>4 ทักษะ: Listening, Speaking, Reading, Writing</li>
+            <li><strong>Outdoor Activities</strong> นอกห้องเรียน</li>
+            <li>English Skills Development (เน้นการอ่าน)</li>
+          </ul>
+          <div style="background:#f5f3ff;border-radius:8px;padding:10px 14px;font-size:0.81rem;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span>📖 ภาคเรียนที่ 1</span><span>115,800</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span>📖 ภาคเรียนที่ 2</span><span>~29,000</span></div>
+            <div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid #ddd6fe;padding-top:6px;margin-bottom:4px;"><span>รวมทั้งปี</span><span style="color:#7c3aed;">~144,800 ฿</span></div>
+            <div style="display:flex;justify-content:space-between;color:#dc2626;font-size:0.77rem;"><span>+ ส่วนต่าง (บุตรท่าน)</span><span>+14,635</span></div>
+            <div style="display:flex;justify-content:space-between;font-weight:700;color:#dc2626;"><span>รวมสุทธิ (บุตรท่าน)</span><span>~159,435 ฿</span></div>
+          </div>
+          <div style="margin-top:8px;"><div style="font-size:0.72rem;color:#9ca3af;margin-bottom:3px;">เทียบกับ IEP (ถูกสุด)</div><div style="background:#e5e7eb;border-radius:3px;height:7px;overflow:hidden;"><div style="background:#7c3aed;height:100%;width:48%;border-radius:3px;"></div></div><div style="font-size:0.7rem;color:#9ca3af;text-align:right;margin-top:2px;">ประหยัดที่สุด 🏆</div></div>
+        </div>
+      </div>
+
+    </div><!-- end grid -->
+
+    <!-- Summary Comparison Table -->
+    <div style="background:white;border-radius:var(--radius);border:1px solid var(--border);padding:22px 24px;">
+      <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:14px;">📊 ตารางสรุปค่าใช้จ่ายทั้ง 5 หลักสูตร</h3>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+          <thead>
+            <tr style="background:#f1f5f9;">
+              <th style="text-align:left;padding:9px 12px;border-bottom:2px solid #e2e8f0;white-space:nowrap;">หลักสูตร</th>
+              <th style="text-align:right;padding:9px 12px;border-bottom:2px solid #e2e8f0;white-space:nowrap;">ภาค 1 (฿)</th>
+              <th style="text-align:right;padding:9px 12px;border-bottom:2px solid #e2e8f0;white-space:nowrap;">ภาค 2 (฿)</th>
+              <th style="text-align:right;padding:9px 12px;border-bottom:2px solid #e2e8f0;white-space:nowrap;">รวม/ปี</th>
+              <th style="text-align:right;padding:9px 12px;border-bottom:2px solid #e2e8f0;white-space:nowrap;">บุตรท่าน (+14,635)</th>
+              <th style="padding:9px 12px;border-bottom:2px solid #e2e8f0;min-width:110px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #f1f5f9;">
+              <td style="padding:9px 12px;"><strong style="color:#1a3a6e;">🌍 English Program</strong></td>
+              <td style="text-align:right;padding:9px 12px;color:#6b7280;">301,700</td>
+              <td style="text-align:right;padding:9px 12px;color:#6b7280;">—</td>
+              <td style="text-align:right;padding:9px 12px;font-weight:700;">301,700</td>
+              <td style="text-align:right;padding:9px 12px;font-weight:700;color:#dc2626;">316,335</td>
+              <td style="padding:9px 12px;"><div style="background:#e5e7eb;border-radius:3px;height:8px;"><div style="background:#1a3a6e;height:100%;width:100%;border-radius:3px;"></div></div></td>
+            </tr>
+            <tr style="border-bottom:1px solid #f1f5f9;">
+              <td style="padding:9px 12px;"><strong style="color:#b45309;">⚙️ STEM-CEL</strong></td>
+              <td style="text-align:right;padding:9px 12px;color:#6b7280;">143,300</td>
+              <td style="text-align:right;padding:9px 12px;color:#6b7280;">~47,000</td>
+              <td style="text-align:right;padding:9px 12px;font-weight:700;">~190,300</td>
+              <td style="text-align:right;padding:9px 12px;font-weight:700;color:#dc2626;">~204,935</td>
+              <td style="padding:9px 12px;"><div style="background:#e5e7eb;border-radius:3px;height:8px;"><div style="background:#b45309;height:100%;width:63%;border-radius:3px;"></div></div></td>
+            </tr>
+            <tr style="border-bottom:1px solid #f1f5f9;">
+              <td style="padding:9px 12px;"><strong style="color:#0f766e;">🔬 Smart Science</strong></td>
+              <td style="text-align:right;padding:9px 12px;color:#6b7280;">135,800</td>
+              <td style="text-align:right;padding:9px 12px;color:#6b7280;">~39,000</td>
+              <td style="text-align:right;padding:9px 12px;font-weight:700;">~174,800</td>
+              <td style="text-align:right;padding:9px 12px;font-weight:700;color:#dc2626;">~189,435</td>
+              <td style="padding:9px 12px;"><div style="background:#e5e7eb;border-radius:3px;height:8px;"><div style="background:#0f766e;height:100%;width:58%;border-radius:3px;"></div></div></td>
+            </tr>
+            <tr style="border-bottom:1px solid #f1f5f9;">
+              <td style="padding:9px 12px;"><strong style="color:#1d4ed8;">🇬🇧 CEL</strong></td>
+              <td style="text-align:right;padding:9px 12px;color:#6b7280;">142,300</td>
+              <td style="text-align:right;padding:9px 12px;color:#6b7280;">~28,000</td>
+              <td style="text-align:right;padding:9px 12px;font-weight:700;">~170,300</td>
+              <td style="text-align:right;padding:9px 12px;font-weight:700;color:#dc2626;">~184,935</td>
+              <td style="padding:9px 12px;"><div style="background:#e5e7eb;border-radius:3px;height:8px;"><div style="background:#1d4ed8;height:100%;width:56%;border-radius:3px;"></div></div></td>
+            </tr>
+            <tr>
+              <td style="padding:9px 12px;"><strong style="color:#7c3aed;">💬 IEP</strong> <span style="background:#dcfce7;color:#166534;font-size:0.7rem;padding:1px 6px;border-radius:4px;font-weight:700;margin-left:4px;">ประหยัดที่สุด</span></td>
+              <td style="text-align:right;padding:9px 12px;color:#6b7280;">115,800</td>
+              <td style="text-align:right;padding:9px 12px;color:#6b7280;">~29,000</td>
+              <td style="text-align:right;padding:9px 12px;font-weight:700;">~144,800</td>
+              <td style="text-align:right;padding:9px 12px;font-weight:700;color:#dc2626;">~159,435</td>
+              <td style="padding:9px 12px;"><div style="background:#e5e7eb;border-radius:3px;height:8px;"><div style="background:#7c3aed;height:100%;width:48%;border-radius:3px;"></div></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:14px;background:#fff3cd;border-left:4px solid #ff6f00;border-radius:8px;padding:11px 14px;font-size:0.83rem;line-height:1.6;">
+        <strong>💡 หมายเหตุ:</strong> ค่าใช้จ่ายข้างต้น <em>ไม่รวม</em> ค่าเรียนวันเสาร์และค่ารถรับ-ส่งนักเรียน &nbsp;|&nbsp; ค่าเทอม 2 เป็น "โดยประมาณ"<br>
+        ค่านักเรียนใหม่รวมถึง: ค่าเรียนปรับพื้นฐาน + เครื่องแบบ 3 ชุด + ลูกเสือ + พละ + หนังสือเรียน + กระเป๋า + อาหารกลางวัน + สมาชิกสมาคมผู้ปกครองตลอดชีพ
+      </div>
     </div>
   </div>
 
