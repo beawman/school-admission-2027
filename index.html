@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สมัครเรียน ป.1 ปีการศึกษา 2570</title>
+  <style>
+    :root {
+      --primary: #1a237e;
+      --accent: #ff6f00;
+      --bg: #f8f9fc;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --urgent: #dc2626;
+      --warning: #d97706;
+      --ok: #16a34a;
+      --radius: 14px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', 'Noto Sans Thai', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── Header ── */
+    .hero {
+      background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+      color: white;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    .hero h1 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.5px; }
+    .hero p { margin-top: 8px; opacity: 0.85; font-size: 1.05rem; }
+    .hero .child-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 18px; background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3); border-radius: 50px;
+      padding: 8px 20px; font-size: 0.95rem;
+    }
+    .hero .child-badge span { font-weight: 700; color: #ffd54f; }
+    .last-updated { margin-top: 12px; font-size: 0.82rem; opacity: 0.6; }
+
+    /* ── Nav ── */
+    .nav-tabs {
+      display: flex; justify-content: center; gap: 8px;
+      padding: 20px 24px 0; flex-wrap: wrap;
+    }
+    .nav-tab {
+      padding: 8px 18px; border-radius: 50px; border: 2px solid var(--border);
+      background: white; cursor: pointer; font-size: 0.9rem; font-weight: 600;
+      transition: all .2s;
+    }
+    .nav-tab:hover, .nav-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    /* ── Container ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 60px; }
+
+    /* ── Alert Banner ── */
+    .alert-banner {
+      margin: 24px 0 0;
+      background: linear-gradient(90deg, #fff3cd, #fff);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.95rem;
+    }
+    .alert-banner .icon { font-size: 1.4rem; }
+
+    /* ── Section ── */
+    .section { display: none; margin-top: 24px; }
+    .section.active { display: block; }
+
+    /* ── Cards Grid ── */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+
+    .school-card {
+      background: var(--card-bg); border-radius: var(--radius);
+      border: 1px solid var(--border); overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform .2s, box-shadow .2s;
+    }
+    .school-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+
+    .card-header {
+      padding: 18px 20px 14px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .card-logo {
+      width: 50px; height: 50px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; color: white; flex-shrink: 0;
+    }
+    .card-title h3 { font-size: 1.05rem; font-weight: 700; }
+    .card-title .name-en { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+    .badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+    .badge {
+      font-size: 0.72rem; padding: 2px 8px; border-radius: 50px;
+      font-weight: 600; letter-spacing: 0.3px;
+    }
+    .badge-type { background: #e8eaf6; color: #3949ab; }
+    .badge-gender { background: #fce4ec; color: #c2185b; }
+    .badge-method { background: #e8f5e9; color: #2e7d32; }
+
+    .card-body { padding: 0 20px 18px; }
+
+    .info-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; }
+    .info-row .label { color: var(--muted); min-width: 90px; flex-shrink: 0; }
+    .info-row .value { font-weight: 600; }
+
+    .urgency-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 700;
+    }
+    .urgency-urgent { background: #fee2e2; color: var(--urgent); }
+    .urgency-normal { background: #fef9c3; color: #92400e; }
+    .urgency-later { background: #dcfce7; color: #15803d; }
+
+    .tuition-range { font-size: 0.88rem; color: var(--muted); margin-top: 2px; }
+
+    .card-footer {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .btn {
+      padding: 6px 14px; border-radius: 8px; font-size: 0.82rem;
+      font-weight: 600; text-decoration: none; border: none; cursor: pointer;
+      transition: opacity .2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-outline { border: 1.5px solid var(--border); color: var(--text); background: transparent; }
+    .btn-green { background: #16a34a; color: white; }
+
+    /* ── Timeline ── */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 11px; top: 0; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+    .tl-item { position: relative; margin-bottom: 28px; }
+    .tl-dot {
+      position: absolute; left: -28px; top: 4px;
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 2px solid white; box-shadow: 0 0 0 2px currentColor;
+    }
+    .tl-dot.urgent { color: var(--urgent); background: var(--urgent); }
+    .tl-dot.normal { color: var(--warning); background: var(--warning); }
+    .tl-dot.later  { color: var(--ok); background: var(--ok); }
+    .tl-month { font-size: 0.78rem; color: var(--muted); font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+    .tl-school { font-weight: 700; font-size: 1rem; }
+    .tl-action { font-size: 0.88rem; color: var(--muted); }
+
+    /* ── Comparison Table ── */
+    .comparison-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+    .comparison-table th { background: var(--primary); color: white; padding: 12px 14px; font-size: 0.85rem; text-align: left; }
+    .comparison-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tr:nth-child(even) td { background: #f9fafb; }
+    .eligible { color: var(--ok); font-weight: 700; }
+
+    /* ── Checklist ── */
+    .checklist { list-style: none; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.93rem;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist .check { width: 20px; height: 20px; border: 2px solid var(--border); border-radius: 5px; flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .checklist .check.done { background: var(--ok); border-color: var(--ok); color: white; font-size: 0.8rem; }
+
+    /* ── Card Detail Modal ── */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: white; border-radius: var(--radius); max-width: 560px; width: 100%; max-height: 85vh; overflow-y: auto; }
+    .modal-header { padding: 20px 24px 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .modal-body { padding: 20px 24px; }
+    .modal-close { cursor: pointer; font-size: 1.5rem; color: var(--muted); background: none; border: none; line-height: 1; }
+    .doc-list { list-style: none; }
+    .doc-list li { padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; display: flex; gap: 8px; align-items: center; }
+    .doc-list li::before { content: '📄'; font-size: 0.85rem; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .comparison-table { font-size: 0.78rem; }
+      .comparison-table th, .comparison-table td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>📚 สมัครเรียน ป.1 ปีการศึกษา 2570</h1>
+  <p>ติดตามข้อมูลการรับสมัคร 6 โรงเรียนชั้นนำ</p>
+  <div class="child-badge">
+    👶 บุตรเกิด กันยายน 2564 &nbsp;|&nbsp; อายุวันเปิดเรียน <span>5 ปี 8 เดือน</span> &nbsp;|&nbsp; ✅ ผ่านเกณฑ์ทุกโรงเรียน
+  </div>
+  <div class="last-updated" id="lastUpdated">อัปเดตล่าสุด: กำลังโหลด...</div>
+</div>
+
+<!-- Nav Tabs -->
+<div class="container">
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showTab('cards')">🏫 ทุกโรงเรียน</button>
+    <button class="nav-tab" onclick="showTab('timeline')">📅 Timeline</button>
+    <button class="nav-tab" onclick="showTab('compare')">📊 เปรียบเทียบ</button>
+    <button class="nav-tab" onclick="showTab('docs')">📋 Checklist เอกสาร</button>
+  </div>
+
+  <!-- Alert Banner -->
+  <div class="alert-banner" id="alertBanner">
+    <div class="icon">⚠️</div>
+    <div id="alertText">กำลังตรวจสอบ...</div>
+  </div>
+
+  <!-- ── TAB: Cards ── -->
+  <div class="section active" id="section-cards">
+    <div class="cards-grid" id="cardsGrid"></div>
+  </div>
+
+  <!-- ── TAB: Timeline ── -->
+  <div class="section" id="section-timeline">
+    <div style="background:white;border-radius:var(--radius);border:1px solid var(--border);padding:28px 32px;margin-top:0;">
+      <h2 style="margin-bottom:24px;font-size:1.2rem;">📅 แผนการสมัครเรียน ปีการศึกษา 2570</h2>
+      <div class="timeline" id="timelineContainer"></div>
+    </div>
+  </div>
+
+  <!-- ── TAB: Compare ── -->
+  <div class="section" id="section-compare">
+    <div style="background:white;border-radius:var(--radius);border:1px solid var(--border);padding:24px;overflow-x:auto;">
+      <h2 style="margin-bottom:18px;font-size:1.2rem;">📊 ตารางเปรียบเทียบ</h2>
+      <table class="comparison-table" id="compareTable"></table>
+    </div>
+  </div>
+
+  <!-- ── TAB: Docs ── -->
+  <div class="section" id="section-docs">
+    <div style="background:white;border-radius:var(--radius);border:1px solid var(--border);padding:28px;">
+      <h2 style="margin-bottom:6px;font-size:1.2rem;">📋 Checklist เอกสารที่ต้องเตรียม</h2>
+      <p style="color:var(--muted);font-size:0.88rem;margin-bottom:20px;">คลิกเพื่อทำเครื่องหมายเอกสารที่เตรียมแล้ว</p>
+      <ul class="checklist" id="checklistContainer"></ul>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalContent">
+    <div class="modal-header">
+      <div>
+        <h3 id="modalTitle"></h3>
+        <div style="font-size:0.82rem;color:var(--muted);margin-top:4px;" id="modalSubtitle"></div>
+      </div>
+      <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+let schoolData = null;
+let checkedItems = JSON.parse(localStorage.getItem('schoolChecklist') || '{}');
+
+async function loadData() {
+  try {
+    const res = await fetch('data.json?t=' + Date.now());
+    schoolData = await res.json();
+    renderAll();
+  } catch(e) {
+    document.getElementById('alertText').textContent = 'ไม่สามารถโหลดข้อมูลได้ กรุณารีเฟรชหน้า';
+  }
+}
+
+function renderAll() {
+  const d = schoolData;
+  // Last updated
+  const dt = new Date(d.meta.last_updated);
+  document.getElementById('lastUpdated').textContent =
+    'อัปเดตล่าสุด: ' + dt.toLocaleDateString('th-TH', {year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'});
+
+  // Alert
+  const urgent = d.schools.filter(s => s.apply_urgency === 'urgent');
+  if (urgent.length > 0) {
+    document.getElementById('alertText').innerHTML =
+      '<strong>🚨 เร่งด่วน!</strong> ' + urgent.map(s => s.name + ' เปิดรับสมัครเร็วๆ นี้ (' + s.apply_period + ')').join(', ');
+    document.getElementById('alertBanner').style.borderColor = '#dc2626';
+    document.getElementById('alertBanner').style.background = 'linear-gradient(90deg,#fee2e2,#fff)';
+  } else {
+    document.getElementById('alertText').innerHTML =
+      '<strong>ℹ️ สถานะ:</strong> กำลังเตรียมสมัครปีการศึกษา 2570 — ติดตามประกาศจากแต่ละโรงเรียน';
+  }
+
+  renderCards(d.schools);
+  renderTimeline(d.schools);
+  renderCompare(d.schools);
+  renderChecklist(d.schools);
+}
+
+function renderCards(schools) {
+  const grid = document.getElementById('cardsGrid');
+  grid.innerHTML = schools.map(s => `
+    <div class="school-card">
+      <div class="card-header">
+        <div class="card-logo" style="background:${s.color}">${s.logo_emoji}</div>
+        <div class="card-title">
+          <h3>${s.name}</h3>
+          <div class="name-en">${s.name_en}</div>
+          <div class="badges">
+            <span class="badge badge-type">${s.type}</span>
+            <span class="badge badge-gender">${s.gender}</span>
+            <span class="badge badge-method">${s.selection_method}</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="info-row">
+          <span class="label">📍 ที่ตั้ง</span>
+          <span class="value">${s.location}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">📅 ช่วงสมัคร</span>
+          <span class="value">
+            <span class="urgency-tag urgency-${s.apply_urgency}">
+              ${s.apply_urgency === 'urgent' ? '🔴' : s.apply_urgency === 'normal' ? '🟡' : '🟢'}
+              ${s.apply_period}
+            </span>
+          </span>
+        </div>
+        ${s.urgency_note ? `<div class="info-row"><span class="label"></span><span class="value" style="font-size:0.82rem;color:var(--muted)">${s.urgency_note}</span></div>` : ''}
+        <div class="info-row">
+          <span class="label">💰 ค่าเทอม</span>
+          <span class="value">
+            ${s.tuition_min === 0 && s.tuition_max < 20000 ? 'ต่ำกว่าเอกชนมาก' :
+              s.tuition_min.toLocaleString() + ' – ' + s.tuition_max.toLocaleString() + ' บ./เทอม'}
+          </span>
+        </div>
+        ${s.tuition_note ? `<div class="tuition-range">${s.tuition_note}</div>` : ''}
+        <div class="info-row" style="margin-top:8px;">
+          <span class="label">🎂 อายุ</span>
+          <span class="value" style="color:var(--ok)">${s.age_note}</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="${s.apply_url}" target="_blank" class="btn btn-primary">🔗 เว็บสมัคร</a>
+        ${s.website !== s.apply_url ? `<a href="${s.website}" target="_blank" class="btn btn-outline">🏫 เว็บโรงเรียน</a>` : ''}
+        <button class="btn btn-outline" onclick="openModal('${s.id}')">📋 ดูรายละเอียด</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTimeline(schools) {
+  const order = ['urgent','normal','later'];
+  const sorted = [...schools].sort((a,b) => order.indexOf(a.apply_urgency) - order.indexOf(b.apply_urgency));
+  const container = document.getElementById('timelineContainer');
+  container.innerHTML = sorted.map(s => `
+    <div class="tl-item">
+      <div class="tl-dot ${s.apply_urgency}"></div>
+      <div class="tl-month">${s.apply_period}</div>
+      <div class="tl-school">${s.logo_emoji} ${s.name}</div>
+      <div class="tl-action">วิธีคัดเลือก: ${s.selection_method} | สอบ/ประเมิน: ${s.exam_date}</div>
+      ${s.urgency_note ? `<div style="margin-top:4px;font-size:0.8rem;color:${s.apply_urgency==='urgent'?'var(--urgent)':'var(--muted)'};">${s.urgency_note}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+function renderCompare(schools) {
+  const table = document.getElementById('compareTable');
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th>โรงเรียน</th>
+        <th>เพศ</th>
+        <th>วิธีคัดเลือก</th>
+        <th>ช่วงสมัคร</th>
+        <th>ค่าเทอม (บ./เทอม)</th>
+        <th>ผ่านเกณฑ์</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${schools.map(s => `
+        <tr>
+          <td><strong>${s.logo_emoji} ${s.name}</strong><br><span style="color:var(--muted);font-size:0.78rem;">${s.short}</span></td>
+          <td>${s.gender}</td>
+          <td>${s.selection_method}</td>
+          <td><span class="urgency-tag urgency-${s.apply_urgency}" style="font-size:0.75rem;padding:2px 8px;">${s.apply_period}</span></td>
+          <td>${s.tuition_min === 0 && s.tuition_max < 20000 ? 'ต่ำ' : s.tuition_min.toLocaleString() + '–' + s.tuition_max.toLocaleString()}</td>
+          <td class="eligible">✅ ผ่าน</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  `;
+}
+
+function renderChecklist(schools) {
+  const coreItems = [
+    'สำเนาใบสูติบัตรนักเรียน (5 ชุด)',
+    'สำเนาทะเบียนบ้านนักเรียน (5 ชุด)',
+    'หนังสือรับรองการศึกษาจากอนุบาล',
+    'สำเนาบัตรประชาชนบิดา (5 ชุด)',
+    'สำเนาบัตรประชาชนมารดา (5 ชุด)',
+    'สำเนาทะเบียนบ้านบิดา-มารดา (5 ชุด)',
+    'รูปถ่ายนักเรียน 1-1.5 นิ้ว (15 รูป)',
+  ];
+  const extraItems = [
+    'ใบรับรองศีลล้างบาป (เซนต์คาเบรียล / อัสสัมชัญ)',
+    'หลักฐานการเป็นศิษย์เก่าของบิดา (เซนต์คาเบรียล)',
+    'Portfolio / คลิปวิดีโอแนะนำตัว (กรุงเทพคริสเตียน)',
+    'หลักฐานการโอนเงินค่าสมัคร 1,000 บาท (อัสสัมชัญธนบุรี)',
+  ];
+  const allItems = [
+    { label: '📌 เอกสารหลัก', items: coreItems },
+    { label: '➕ เอกสารเพิ่มเติม (บางโรงเรียน)', items: extraItems },
+  ];
+  const container = document.getElementById('checklistContainer');
+  let html = '';
+  allItems.forEach(group => {
+    html += `<li style="font-weight:700;background:#f1f5f9;padding:8px 10px;border-radius:6px;border-bottom:none;margin-top:12px;">${group.label}</li>`;
+    group.items.forEach(item => {
+      const key = btoa(unescape(encodeURIComponent(item))).replace(/=/g, '');
+      const done = checkedItems[key];
+      html += `
+        <li>
+          <div class="check ${done ? 'done' : ''}" onclick="toggleCheck('${key}', this)">${done ? '✓' : ''}</div>
+          <span style="${done ? 'text-decoration:line-through;color:var(--muted)' : ''}">${item}</span>
+        </li>`;
+    });
+  });
+  container.innerHTML = html;
+}
+
+function toggleCheck(key, el) {
+  checkedItems[key] = !checkedItems[key];
+  localStorage.setItem('schoolChecklist', JSON.stringify(checkedItems));
+  el.classList.toggle('done');
+  el.textContent = checkedItems[key] ? '✓' : '';
+  const span = el.nextElementSibling;
+  span.style.textDecoration = checkedItems[key] ? 'line-through' : '';
+  span.style.color = checkedItems[key] ? 'var(--muted)' : '';
+}
+
+function showTab(name) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('section-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function openModal(id) {
+  const s = schoolData.schools.find(x => x.id === id);
+  if (!s) return;
+  document.getElementById('modalTitle').textContent = s.logo_emoji + ' ' + s.name;
+  document.getElementById('modalSubtitle').textContent = s.name_en;
+  document.getElementById('modalBody').innerHTML = `
+    <div style="margin-bottom:16px;">
+      <strong>📍 ที่ตั้ง:</strong> ${s.location}<br>
+      <strong>📞 โทร:</strong> ${s.phone || 'ดูที่เว็บโรงเรียน'}<br>
+      ${s.email ? `<strong>📧 Email:</strong> ${s.email}<br>` : ''}
+      ${s.line ? `<strong>LINE:</strong> ${s.line}<br>` : ''}
+    </div>
+    <div style="margin-bottom:16px;">
+      <strong>📅 กำหนดการ:</strong><br>
+      <ul style="margin-top:6px;padding-left:18px;font-size:0.9rem;line-height:2;">
+        <li>เปิดรับสมัคร: ${s.apply_period}</li>
+        <li>สอบ/ประเมิน: ${s.exam_date}</li>
+        <li>ประกาศผล: ${s.result_date}</li>
+        <li>เปิดเรียน: ${s.enroll_date}</li>
+      </ul>
+    </div>
+    ${s.subjects.length > 0 ? `<div style="margin-bottom:16px;"><strong>📝 วิชา/การประเมิน:</strong><br><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;">${s.subjects.map(x=>`<span class="badge badge-type" style="font-size:0.85rem;padding:4px 10px;">${x}</span>`).join('')}</div></div>` : ''}
+    <div style="margin-bottom:16px;">
+      <strong>📄 เอกสารที่ต้องเตรียม:</strong>
+      <ul class="doc-list" style="margin-top:8px;">
+        ${s.documents.map(d=>`<li>${d}</li>`).join('')}
+      </ul>
+    </div>
+    ${s.highlights.length > 0 ? `<div style="margin-bottom:12px;"><strong>⭐ จุดเด่น:</strong><br><ul style="margin-top:6px;padding-left:18px;font-size:0.9rem;">${s.highlights.map(h=>`<li>${h}</li>`).join('')}</ul></div>` : ''}
+    ${s.notes ? `<div style="background:#fff3cd;border-radius:8px;padding:10px 14px;font-size:0.88rem;"><strong>💡 หมายเหตุ:</strong> ${s.notes}</div>` : ''}
+    <div style="margin-top:16px;display:flex;gap:8px;">
+      <a href="${s.apply_url}" target="_blank" class="btn btn-primary">🔗 สมัครออนไลน์</a>
+      ${s.facebook ? `<a href="${s.facebook}" target="_blank" class="btn btn-outline">Facebook</a>` : ''}
+    </div>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModalBtn();
+}
+function closeModalBtn() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+loadData();
+</script>
+</body>
+</html>
