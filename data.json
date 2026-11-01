@@ -4,7 +4,7 @@
     "child_birthdate": "กันยายน 2564",
     "child_age_at_school": "5 ปี 8 เดือน",
     "target_year": 2570,
-    "last_updated": "2026-10-31T13:29:40+07:00",
+    "last_updated": "2026-11-01T14:00:47+07:00",
     "data_sources": [
       "ACT ระเบียบการรับสมัคร ป.1 ปีการศึกษา 2570 (official PDF)",
       "SG ประกาศรับสมัคร ป.1 ปีการศึกษา 2570 รอบทั่วไป (ประกาศ 9 ม.ค. 2569)"
@@ -349,8 +349,8 @@
       "logo_emoji": "🌾",
       "selection_method": "ประเมินความพร้อม",
       "apply_period": "มกราคม – กุมภาพันธ์ 2570",
-      "apply_urgency": "normal",
-      "urgency_note": "📌 เตรียมเอกสารให้พร้อม",
+      "apply_urgency": "urgent",
+      "urgency_note": "🚨 ใกล้เปิดรับสมัครแล้ว! ติดตามด่วน",
       "exam_date": "มีนาคม 2570",
       "result_date": "มีนาคม – เมษายน 2570",
       "enroll_date": "พฤษภาคม 2570",
